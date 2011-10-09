@@ -13,9 +13,9 @@ class RstPlugin(CMSPluginBase):
     render_template = 'cms/content.html'
     model = CreolePluginModel
     form = CreolePluginForm
-    
-    def render(self, context, instance, placeholder):
-        return {'content': postprocess(restructuredtext(instance.body))}
 
+    def render(self, context, instance, placeholder):
+        context.update({'content': postprocess(restructuredtext(instance.body))})
+        return context
 
 plugin_pool.register_plugin(RstPlugin)
