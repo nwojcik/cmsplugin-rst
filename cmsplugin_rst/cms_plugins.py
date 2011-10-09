@@ -11,8 +11,8 @@ from django.utils.translation import ugettext_lazy as _
 class RstPlugin(CMSPluginBase):
     name = _('Restructured Text Plugin')
     render_template = 'cms/content.html'
-    model = CreolePluginModel
-    form = CreolePluginForm
+    model = RstPluginModel
+    form = RstPluginForm
 
     def render(self, context, instance, placeholder):
         context.update({'content': postprocess(restructuredtext(instance.body))})
